@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{fragments/layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">>
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> Title</th>
+        <th> Author</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${messages.isEmpty()}">
+        <td colspan="2"> No Books Available</td>
+    </tr>
+    <tr th:each="message : ${messages}">
+        <td><span th:text="${message.course}"> course </span></td>
+        <td><span th:text="${message.semester}"> semester </span></td>
+        <td><span th:text="${message.subject}"> subject </span></td>
+        <td><span th:text="${message.message}"> message </span></td>
+        <td><span th:text="${message.customers}"> customers </span></td>
+        <td th:each="file : ${message.dbFile}">
+            <p th:text="${file.fileName}"> File</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

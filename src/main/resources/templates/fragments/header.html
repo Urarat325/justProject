@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" type="text/css"/>
+</head>
+<body>
+<th:block th:fragment="header">
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/}">
+                    Главная страница
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a th:href="@{/}">Войти</a>
+                </li>
+                <li sec:authorize="hasRole('USER')">
+                    <a th:href="@{/generalList}">Данные</a>
+                </li>
+                <li>
+                    <a th:href="@{/logout}">Выйти</a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <div style="display: inline-block;">
+                        User: <span sec:authentication="name"></span> ||
+                        Roles: <span sec:authentication="principal.authorities"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</th:block>
+</body>
+</html>
