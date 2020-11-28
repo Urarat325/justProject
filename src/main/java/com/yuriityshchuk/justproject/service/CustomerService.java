@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 
 @Service
-@Scope(scopeName = "websocket", proxyMode = ScopedProxyMode.TARGET_CLASS)
+//@Scope(scopeName = "websocket", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CustomerService implements UserDetailsService {
 
     private final CustomerRepo customerRepo;
