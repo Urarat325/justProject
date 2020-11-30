@@ -14,8 +14,6 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 
 @Service
-//Просто проверяю git
-@Scope(scopeName = "websocket", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CustomerService implements UserDetailsService {
 
     private final CustomerRepo customerRepo;

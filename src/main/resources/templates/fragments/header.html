@@ -1,37 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" type="text/css"/>
-</head>
+<html>
 <body>
-<th:block th:fragment="header">
-    <nav class="navbar navbar-inverse navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" th:href="@{/}">
-                    Главная страница
-                </a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a th:href="@{/}">Войти</a>
-                </li>
-                <li sec:authorize="hasRole('USER')">
-                    <a th:href="@{/generalList}">Данные</a>
-                </li>
-                <li>
-                    <a th:href="@{/logout}">Выйти</a>
-                </li>
-                <li sec:authorize="isAuthenticated()">
-                    <div style="display: inline-block;">
-                        User: <span sec:authentication="name"></span> ||
-                        Roles: <span sec:authentication="principal.authorities"></span>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</th:block>
+    <th:block th:fragment="header">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-light">
+
+                <div class="navbar navbar-expand-sm bg-dark navbar-dark">
+                    <a class="navbar-brand" href="@{/}">
+                        Главная страница
+                    </a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li sec:authorize="hasRole('USER')">
+                        <a href="@{/generalList}">Данные</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()"><p class="navbar-text" >User: <span sec:authentication="name"></span></p></li>
+                    <li sec:authorize="isAuthenticated()"><p class="navbar-text" >User: <span sec:authentication="principal.authorities"></span></p></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="@{/login}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                    <li><a href="@{/logout}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                </ul>
+
+        </nav>
+    </th:block>
 </body>
 </html>
