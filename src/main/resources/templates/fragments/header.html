@@ -2,25 +2,30 @@
 <html>
 <body>
     <th:block th:fragment="header">
-        <nav class="navbar navbar-expand-sm bg-dark navbar-light">
-
-                <div class="navbar navbar-expand-sm bg-dark navbar-dark">
-                    <a class="navbar-brand" href="@{/}">
-                        Главная страница
-                    </a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li sec:authorize="hasRole('USER')">
-                        <a href="@{/generalList}">Данные</a>
-                    </li>
-                    <li sec:authorize="isAuthenticated()"><p class="navbar-text" >User: <span sec:authentication="name"></span></p></li>
-                    <li sec:authorize="isAuthenticated()"><p class="navbar-text" >User: <span sec:authentication="principal.authorities"></span></p></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="@{/login}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-                    <li><a href="@{/logout}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-                </ul>
-
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <a class="navbar-brand" th:href="@{/}">Главная страница</a>
+            <ul class="navbar-nav">
+                <li class="nav-item" sec:authorize="hasRole('USER')">
+                    <a href="@{/generalList}">Данные</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <p class="navbar-text" >User: <span sec:authentication="name"></span></p>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <p class="navbar-text" >Roles: <span sec:authentication="principal.authorities"></span></p>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <a class="nav-link" th:href="@{/login}"><span class="glyphicon glyphicon-user"></span> Login</a>
+                </li>
+                <li>
+                    <form method="post" class="nav-link" th:action="@{/logout}">
+                        <span class="glyphicon glyphicon-log-in"></span>
+                        <button>Logout</button>
+                    </form>
+                </li>
+            </ul>
         </nav>
     </th:block>
 </body>

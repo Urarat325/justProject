@@ -8,19 +8,32 @@
 </head>
 <body>
 <div layout:fragment="content" th:remove="tag">
-    <div class="row">
+    <div class="row justify-content-center align-items-center h-100">
         <div class="col-md-6 col-md-offset-3">
             <h1>Регистрируйся =D</h1>
-            <form method="post" th:action="@{/login}">
-                <div th:if="${param.logout}">
-                    <div class="alert alert-info">
-                        You have been logged out.
-                    </div>
-                </div>
+            <form method="post" th:action="@{/registration}">
                 <div th:if="${param.error}">
                     <div class="alert alert-info">
                         You have been logged out.
                     </div>
+                </div>
+                <div class="form-group">
+                    <label for="username">Имя</label>:
+                    <input autofocus="autofocus"
+                           class="form-control"
+                           id="firstname"
+                           name="firstname"
+                           placeholder="Имя"
+                           type="text">
+                </div>
+                <div class="form-group">
+                    <label for="username">Фамилия</label>:
+                    <input autofocus="autofocus"
+                           class="form-control"
+                           id="lastname"
+                           name="lastname"
+                           placeholder="Фамилия"
+                           type="text">
                 </div>
                 <div class="form-group">
                     <label for="username">Логин</label>:
@@ -32,7 +45,7 @@
                            type="text">
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>:
+                    <label for="password">Пароль</label>:
                     <input class="form-control"
                            id="password"
                            name="password"
@@ -40,15 +53,7 @@
                            type="password">
                 </div>
                 <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
-                            <input class="form-control btn btn-info"
-                                   id="login-submit"
-                                   name="login-submit"
-                                   type="submit"
-                                   value="Log In">
-                        </div>
-                    </div>
+                    <button class="btn btn-info btn-lg btn-block">Зарегистрироваться</button>
                 </div>
             </form>
         </div>

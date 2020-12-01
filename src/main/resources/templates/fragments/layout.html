@@ -15,10 +15,10 @@
     <title layout:title-pattern="$CONTENT_TITLE"></title>
 </head>
 <body>
-<th:block th:replace="fragments/header :: header"/>
-<div class="container">
-    <th:block layout:fragment="content"/>
-</div>
-<th:block th:replace="fragments/footer :: footer"/>
+    <th:block th:replace="fragments/header :: header"/>
+        <div class="container">
+            <th:block layout:fragment="content"/>
+        </div>
+    <th:block th:replace="fragments/footer :: footer"/>
 </body>
 </html>
